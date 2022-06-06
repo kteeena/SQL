@@ -1,0 +1,21 @@
+I figured this double JOIN out all on my own, and was so proud of it, as it wasn't exclusively taught in the Udemy lesson.
+
+Problem: "Get a list of all the movies actor "Nick Wahlberg" has been in.
+
+I went over this for so long, becuase it seemed there was not enough info from two of the tables to answer this question, but instead from three tables.
+Given a double-join had not been introduced to me yet, it was not an obvious option. But I tried it anyway. Here is the query and it worked!!
+
+SELECT first_name, last_name, film.title FROM actor
+JOIN film_actor 
+ON actor.actor_id = film_actor.actor_id
+JOIN film
+ON film.film_id = film_actor.film_id
+WHERE actor.first_name LIKE 'N%' AND actor.last_name LIKE 'W%';
+
+This yielded 25 rows of results, all including first name Nick, last name Wahlberg, and the movie titles corresponding to this actor. 
+
+Though this is not perfect, I was proud. 
+
+Going over my query, a better way to search the actor's name would've looked something like this, to elimanate any duplicates of actors whose 
+names may have started with the first letters: WHERE first_name = 'Nick' AN last_name = 'Wahlberg';
+This would've been much simpler and proficient, but hey, I'm still happy as a newbie.
